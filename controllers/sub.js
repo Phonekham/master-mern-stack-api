@@ -4,8 +4,8 @@ const Sub = require("../models/sub");
 
 exports.create = async (req, res) => {
   try {
-    const { name } = req.body;
-    res.json(await new Sub({ name, slug: slugify(name) }).save());
+    const { name, parent } = req.body;
+    res.json(await new Sub({ name, parent, slug: slugify(name) }).save());
   } catch (err) {
     res.status(400).send("Create sub failed");
   }
